@@ -70,7 +70,10 @@ public extension Section {
 // MARK: - Configuration
 
 public struct SectionConfiguration {
-    public struct Header: View {
+    public typealias Header = HeaderFooterView
+    public typealias Footer = HeaderFooterView
+    
+    public struct HeaderFooterView: View {
         private let _view: () -> AnyView
         
         public var body: some View {
@@ -80,19 +83,6 @@ public struct SectionConfiguration {
         public init<V: View>(_ header: V) {
             self._view = { AnyView(header) }
             
-        }
-        
-    }
-    
-    public struct Footer: View {
-        private let _view: () -> AnyView
-        
-        public var body: some View {
-            _view()
-        }
-        
-        public init<V: View>(_ footer: V) {
-            self._view = { AnyView(footer) }
         }
         
     }
